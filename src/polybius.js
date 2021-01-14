@@ -38,22 +38,22 @@ function polybius(input, encode = true) {
   if (encode) {
     const lowCase = input.toLowerCase().split(" ");
     const wordsToKeys = lowCase.map((word) =>
-      word.split(" ").map((letter) => alphabet[letter])
+      word.split("").map((letter) => alphabet[letter])
     );
     const turnToKeys = wordsToKeys.map((keys) => keys.join(""));
     return turnToKeys.join(" ");
   }
   if (!encode) {
-    if (input.split("").join("").length % 2 !== 0) return false;
+    if (input.split(" ").join("").length % 2 !== 0) return false;
     const words = input.split(" ");
-    let seperatedWords = words.map((word) => word.match(/.{2}/g));
-    const decodeLetter = separateWords.map((numberKey) =>
+    let separatedWords = words.map((word) => word.match(/.{2}/g));
+    const decodeLetters = separatedWords.map((numberKey) =>
       numberKey.map((letter) =>
         Object.keys(alphabet).find((key) => alphabet[key] == letter)
       )
     );
-    const deleteSpaces = decodeLetter.map((space) => space.join(""));
-    return deletedSpaces.join(" ");
+    const deleteSpaces = decodeLetters.map((space) => space.join(""));
+    return deleteSpaces.join(" ");
   }
 }
 
